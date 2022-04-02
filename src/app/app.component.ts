@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ionic-angular-1FM045';
+  total = 90;
+  esCierto = false;
 }
