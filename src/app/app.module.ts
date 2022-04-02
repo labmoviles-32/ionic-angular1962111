@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { IonicModule } from '@ionic/angular';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
 =======
     AppComponent
 >>>>>>> 86604eb01d99ad3546f9dfad6c665567b2e11e6f
-    AlumnosComponent
+    AlumnosComponent,
+TestComponent
   ],
   imports: [
     BrowserModule,
