@@ -8,12 +8,20 @@ import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
+<<<<<<< HEAD
     AppComponent,
+=======
+    AppComponent
+>>>>>>> 86604eb01d99ad3546f9dfad6c665567b2e11e6f
     AlumnosComponent
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule,
+=======
+    AppRoutingModule
+>>>>>>> 86604eb01d99ad3546f9dfad6c665567b2e11e6f
     IonicModule.forRoot()
   ],
   providers: [],

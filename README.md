@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 # IonicAngular1FM045
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
+=======
+# IonicAngular1962111
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+>>>>>>> 86604eb01d99ad3546f9dfad6c665567b2e11e6f
 
 ## Development server
 
