@@ -26,8 +26,8 @@ export class AlumnosComponent implements OnInit {
       "matricula": "safdafdsf"
     },
     {
-      "nombre": "ALONDRA BERENISE", 
-      "apellido": "ZAMORA MORENO", 
+      "nombre": "JOHANN JOSEPH", 
+      "apellido": "VELAZQUEZ ANTONIO", 
       "matricula": "gfdgfd678"
     },
     {
