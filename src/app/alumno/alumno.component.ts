@@ -1,54 +1,68 @@
-import { Component, OnInit, Input, ɵisListLikeIterable } from '@angular/core';
-
-import { DatabaseService } from '../database.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-alumnos',
-  templateUrl: './alumnos.component.html',
-  styleUrls: ['./alumnos.component.css']
+  selector: 'app-alumno',
+  templateUrl: './alumno.component.html',
+  styleUrls: ['./alumno.component.css']
 })
-export class AlumnosComponent implements OnInit {
+export class AlumnoComponent implements OnInit {
 
-  constructor(private db: DatabaseService) { }
+  constructor() { }
 
-  alumnos: any = [];
+  alumnos = [
+    {
+      "nombre":"Raul",
+      "apellido": "Sanchez",
+      "matricula": "12345678"
+    },
+    {
+      "nombre":"Felix",
+      "apellido": "Alanis",
+      "matricula": "1947480"
+    },
+    {
+      "nombre":"Josue",
+      "apellido": "Reyes",
+      "matricula": "1876321"
+    },
+    {
+      "nombre":"Johann",
+      "apellido": "Velazquez",
+      "matricula": "1962111"
+    },
+    {
+      "nombre":"Maria",
+      "apellido": "Castillo",
+      "matricula": "2087341"
+    },
+    {
+      "nombre":"Sandra",
+      "apellido": "Antonio",
+      "matricula": "1523468"
+    },
+    {
+      "nombre":"Juan",
+      "apellido": "Velázquez",
+      "matricula": "19874652"
+    }
+  ]
 
   ngOnInit(): void {
-    this.consultaDBAlumnos()
   }
-
 
   @Input() nombreAlumno: string = "";
   @Input() apellidoAlumno: string = "";
   @Input() matriculaAlumno: string = "";
-
-
-  hola: string = "hola mundo";
-
-
-  consultaDBAlumnos(){
-   this.db.getAlumnos().subscribe(res => {
-      console.log(res);
-      this.alumnos = res;
-    })
-  }
-
-  like(): void {
-    //dar like a este elemento
-    console.log("like!");
-  }
-
-  agregarAlumno(): void {
-    var nuevoAlumno: any = {
+ 
+  agregarAlumno(): void{
+    var nuevoAlumno: any={
+      //Propiedades del objeto
       "nombre": this.nombreAlumno,
       "apellido": this.apellidoAlumno,
       "matricula": this.matriculaAlumno
+
     }
-
-    //console.log(nuevoAlumno);
-
-    
-
-    this.alumnos.push(nuevoAlumno); //Funcion en TypeScript 
+    this.alumnos.push(nuevoAlumno); //Agregamos al alumno al arreglo de objetos
   }
+
 }

@@ -3,35 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlumnosComponent } from './alumnos/alumnos.component';
+import { AlumnoComponent } from './alumno/alumno.component';
 import { IonicModule } from '@ionic/angular';
 
-import { RoutesModule } from './routes/routes.module';
-
 import { FormsModule } from '@angular/forms';
+import { ListadoAlumnoComponent } from './listado-alumno/listado-alumno.component';
+import { RouterModule } from '@angular/router';
+import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
+
+import {HttpClientModule } from '@angular/common/http';
 import { TabsComponent } from './tabs/tabs.component';
-import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
-
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlumnosComponent,
-    TabsComponent,
-    AlumnoDetalleComponent
+    AlumnoComponent,
+    ListadoAlumnoComponent,
+    DetalleAlumnoComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    RoutesModule, 
-    HttpClientModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    FormsModule,
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RoutesModule]
+  exports: [RouterModule]
 })
 export class AppModule { }

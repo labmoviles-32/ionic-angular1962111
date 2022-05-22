@@ -1,9 +1,7 @@
-.logo  {
+.logo{
     text-align: right;
 }
 
-.alumno {
-    margin-bottom: 600px ;
+ion-content{
+    background-color: hsl(93, 51%, 76%);
 }
-
-

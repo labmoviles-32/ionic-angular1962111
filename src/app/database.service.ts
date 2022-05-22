@@ -11,16 +11,23 @@ export class DatabaseService {
 
   //GET
   getAlumnos(){
-    return this.http.get('https://alumnos-32-default-rtdb.firebaseio.com/alumnos.json')
+    return this.http.get('https://alumnos-32-1962111-default-rtdb.firebaseio.com/alumnos.json')
   }
 
   getAlumnoDetalle(id: number ) {
-    return this.http.get('https://alumnos-32-default-rtdb.firebaseio.com/alumnos'+ id +'.json')
+    return this.http.get('https://alumnos-32-1962111-default-rtdb.firebaseio.com/alumnos'+ id +'.json')
   }
 
-  //POST
-
-  //UPDATE
-
   //DELETE
+  deleteAlumno(id: number){
+    return this.http.delete('https://alumnos-32-1962111-default-rtdb.firebaseio.com/alumnos/'+id+'.json');
+  }
+  
+  
+  //UPDATE
+  updateAlumno(id:number, alu:any) {
+    return this.http.put('https://alumnos-32-1962111-default-rtdb.firebaseio.com/alumnos/'+id+'.json',alu);
+  }
+
+  
 }

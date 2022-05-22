@@ -1,99 +1,53 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
-import { ActionSheetController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 import { DatabaseService } from '../database.service';
 
+import { ModalController } from '@ionic/angular';
+
 @Component({
-  selector: 'app-alumno-detalle',
-  templateUrl: './alumno-detalle.component.html',
-  styleUrls: ['./alumno-detalle.component.css']
+  selector: 'app-detalle-alumno',
+  templateUrl: './detalle-alumno.component.html',
+  styleUrls: ['./detalle-alumno.component.css']
 })
-export class AlumnoDetalleComponent implements OnInit {
+export class DetalleAlumnoComponent implements OnInit {
 
-  constructor(
-    private ruta: ActivatedRoute, 
-    public actionSheetController: ActionSheetController,
-    private db: DatabaseService) { }
+  constructor(private ruta: ActivatedRoute,
+              private db: DatabaseService,
+              private modal: ModalController) { }
 
-  ngOnInit(): void {
-    //this.getAlumnoDetalle(this.matricula);
-
-    
-    
-  }
-
-  alumnoDetalle: any = {}
-
+  al: any;
+  
   id: number = this.ruta.snapshot.params['index'];
 
-  
-  //matricula: string = this.ruta.snapshot.params['matricula'];
-
-  /* getAlumnoDetalle(matricula: string): any {
-    for(let i = 0; i < this.alumnos.length; i++){ //Ciclo para buscar alumno por matricula
-      if(this.alumnos[i].matricula == this.matricula) { //valida si la matricula coincide en ese alumno
-        this.alumnoDetalle = this.alumnos[i]; // asignar alumno a alumno detlle
-      }
-    } 
-   return this.alumnoDetalle;
-  }*/
-
-  agregarFavoritos(): void {
-    //algo
+  ngOnInit(): void {
+    //var matricula: string = this.ruta.snapshot.params['matricula'];
+    //this.al = this.getAlumno(matricula);
+    this.db.getAlumnoDetalle(this.id).subscribe(res => {
+      this.al = res;
+    })
+    console.log(this.al);
   }
 
-  async abrirActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      cssClass: 'mi-action-sheet',
-      mode: 'ios',
-      buttons: [{
-        text: 'Borrar',
-        role: 'destructive',
-        icon: 'trash',
-        id: 'delete-button',
-        data: {
-          type: 'delete'
-        },
-        handler: () => {
-          console.log('Delete');
-        }
-      }, {
-        text: 'Compartir',
-        icon: 'share',
-        data: 10,
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'Enviar por correo',
-        icon: 'caret-forward-circle',
-        data: 'Data value',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'Favorito',
-        icon: 'heart',
-        handler: () => {
-          this.agregarFavoritos();
-          //console.log('Favorite clicked');
-        }
-      }, {
-        text: 'Cancelar',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
+ 
 
-    const { role, data } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role and data', role, data);
+  alumnos:any = [];
+
+  modAlumno(){
+    console.log(this.al)
+    this.db.updateAlumno(this.id,this.al).subscribe(res=>{
+      console.log(res);
+    })
+
+    this.editado = !this.editado;
+    this.modal.dismiss();
   }
+
+  closeModal(){
+    this.modal.dismiss();
+  }
+
+  editado = false;
 
 }
