@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ɵisListLikeIterable } from '@angular/core';
 
 import { ActionSheetController } from '@ionic/angular';
+import { Alumno } from '../alumno';
 
 
 import { DatabaseService } from '../database.service';
@@ -15,8 +16,9 @@ export class ListadoAlumnoComponent implements OnInit {
   constructor(private asc: ActionSheetController,
               private db: DatabaseService) { }
 
-  alumnos: any=[];
-
+  alumnos: Alumno[] = [];
+  $alumnos: Alumno[] = [];
+  buscarAlumno: string = "";
 
 
   async presentActionSheet() {
@@ -66,7 +68,11 @@ export class ListadoAlumnoComponent implements OnInit {
   ngOnInit(): void {
     this.db.getAlumnos().subscribe(res=>{
       console.log(res);
-      this.alumnos = res;
+      //this.alumnos = res;
+      const alumnosRes: any = res;
+      const alumnosArray = Object.keys(res).forEach((key:any)=>{
+        (this.alumnos).push(alumnosRes[key]);
+      })
     });
   }
 
@@ -84,6 +90,29 @@ export class ListadoAlumnoComponent implements OnInit {
     }
 
     return false;
+  
   }
+
+  get buscarAl(): string { //String de busqueda para el filtrado en alumnos
+    return this.buscarAlumno;
+  }
+
+  set buscarAl(nombre: string) {
+    this.buscarAlumno = nombre;
+
+    this.$alumnos = this.buscaAlumno(nombre);
+
+    console.log(this.$alumnos);
+  }
+
+  buscaAlumno(filtrarPorNombre: string): Alumno[] {
+    filtrarPorNombre = filtrarPorNombre.toLocaleLowerCase();
+    return this.alumnos.filter((alumno: Alumno) => alumno.nombre.toLocaleLowerCase().includes(filtrarPorNombre));
+  }
+  buscar($event: Event) {
+    console.log(this.buscarAlumno, "evento");
+
+  }
+  
 
 }

@@ -1,19 +1,19 @@
 <ion-content>
-  <ion-tabs>
-      <ion-tab-bar routerLink="alumno">
-          <ion-tab-button>
-              <ion-icon name="people-circle-outline"></ion-icon>
-              <ion-label>Alumnos</ion-label>
-          </ion-tab-button>
+    <ion-tabs>
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="inicio" routerLink="alumno">
+                <ion-icon name="people-circle-outline"></ion-icon>
+                <ion-label>Alumnos</ion-label>
+            </ion-tab-button>
 
-          <ion-tab-button>
-              <ion-icon name="person-add-outline"></ion-icon>
-              <ion-label>Añadir Alumno</ion-label>
-          </ion-tab-button>
+            <ion-tab-button tab="registro" routerLink="/registro">
+                <ion-icon name="person-add-outline"></ion-icon>
+                <ion-label>Añadir Alumno</ion-label>
+            </ion-tab-button>
 
-          <ion-tab-button routerLink="/tarjetas">
-              <ion-icon name="person-outline"></ion-icon>
-          </ion-tab-button>
-      </ion-tab-bar>
-  </ion-tabs>
+            <ion-tab-button tab="tarjetas" routerLink="/tarjetas">
+                <ion-icon name="person-outline"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>

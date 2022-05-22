@@ -1,0 +1,30 @@
+<ion-grid>
+    <ion-row>
+        <ion-col >
+            <ion-card>
+                <ion-card-header>
+                    <h2><strong>Registro Alumno</strong></h2>
+                </ion-card-header>
+                <ion-card-content>
+                    <form #addAlumno="ngForm" (ngSubmit)="onSubmit()">
+                        <div>
+                            <ion-label>Nombre:</ion-label>
+                            <ion-input placeholder="Ejemplo: Félix" name="nombre" [(ngModel)]="nombre" required></ion-input>
+                        </div>
+                        <div>
+                            <ion-label>Apellido:</ion-label>
+                            <ion-input placeholder="Ejemplo: Alanís" name="apellido" [(ngModel)]="apellido" required></ion-input>
+                        </div>
+                        <div>
+                            <ion-label>Matrícula:</ion-label>
+                            <ion-input placeholder="Ejemplo: 1947480" name="matricula" [(ngModel)]="matricula" required></ion-input>
+                        </div>
+                        <div>
+                            <ion-button type="submit" [disabled]="!addAlumno.valid">Agregar Alumno</ion-button>
+                        </div>
+                    </form>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
